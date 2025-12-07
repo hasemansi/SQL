@@ -129,3 +129,4 @@ SELECT * FROM book;
 -- INSERT INTO book value (1,101,'abc'); -- Error Code: 1062. Duplicate entry '1-101' for key 'PRIMARY'
 
 SELECT * FROM information_schema.CHECK_CONSTRAINTS WHERE CONSTRAINT_SCHEMA='minskole';
+

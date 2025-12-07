@@ -113,6 +113,13 @@ select customer.cname ,ccity, accno from customer,depositer where customer.cname
 -- inner join
 select c.cname ,ccity,accno from customer c inner join depositer d on c.cname=d.cname;
 
+-- inner join from 3 tables
+select student_fname , student_lname, batch_date, course_name, trainer_name 
+from students_latest s 
+join courses_latest c on s.selected_course = c.course_id
+join trainer_latest t on t.assigned_course_id = c.course_id;
+
+
 -- 2. List customers even if they don’t have an account (LEFT JOIN)
 select c.cname,ccity,accno from customer c left join depositer d on c.cname=d.cname;
 insert into depositer values ('neel' , 'a_01'),('tanish','a_04');
@@ -228,4 +235,22 @@ where lno in (
 select lno from loan 
 where branch_name in(
 select bname from branch where bcity='pune'));
+
+-- full outer join
+-- all the matching records
+-- +
+-- non matching records from left
+-- +
+-- non matching records from right
+use minskole;
+select s.student_fname, s.student_lname, s.selected_course, c.course_name from  students_latest s  left join courses_latest c
+on s.selected_course = c.course_id
+union
+select s.student_fname, s.student_lname, s.selected_course, c.course_name from  students_latest s  right join courses_latest c
+on s.selected_course = c.course_id; 
+
+-- cross join
+-- table 1 = 8 
+-- table 2 = 8
+-- cross join 8*8 = 64
 
